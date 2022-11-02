@@ -1,0 +1,26 @@
+<shared-header>
+  <h2>harry potter</h2>
+  <shared-button [text]="headerBtn"></shared-button>
+</shared-header>
+<main class="wrapper">
+  <app-course
+    *ngFor="let course of courses"
+    [course]="course"
+    [isEditable]="isEditable"
+  >
+    <span showCourseBtn>
+      <shared-button
+        (click)="showCourse(course.id)"
+        text="show course"
+      ></shared-button>
+    </span>
+    <fa-icon (click)="editCourse(course.id)" [icon]="editIcon"></fa-icon>
+    <fa-icon (click)="deleteCourse(course.id)" [icon]="deleteIcon"></fa-icon>
+  </app-course>
+  <shared-info
+    infoTitle="Your List is Empty"
+    infoText="Please use 'Add New Course' button to add your first course"
+  >
+    <shared-button text="Add new course"> </shared-button
+  ></shared-info>
+</main>
