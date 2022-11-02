@@ -9,7 +9,6 @@ import MOCK_COURSES from 'src/assets/mockData';
 export class AppComponent {
   courses = MOCK_COURSES;
   isEditable = true;
-  $courseId!: string;
 
   showCourse($courseId: string) {
     console.log(`Show course with courseId: ${$courseId}`);
