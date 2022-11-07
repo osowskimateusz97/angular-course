@@ -1,1 +1,74 @@
-<p>registration works!</p>
+<section class="login">
+  <h1 class="login__heading">Registration</h1>
+  <form class="login__form">
+    <div>
+      <label class="login__label" for="name">Name</label>
+      <input
+        required
+        class="login__input"
+        placeholder="input text"
+        type="text"
+        id="name"
+        name="name"
+        [formControl]="formFields.name"
+      />
+
+      <div
+        class="login__error"
+        *ngIf="formFields.name.errors?.['required'] &&  formFields.name?.touched "
+      >
+        Name is required
+      </div>
+      <div
+        class="login__error"
+        *ngIf="formFields.name.errors?.['minlength'] && formFields.name?.touched "
+      >
+        Name must be at least 6 characters long.
+      </div>
+    </div>
+    <div>
+      <label class="login__label" for="email">Email</label>
+      <input
+        required
+        class="login__input"
+        placeholder="input text"
+        type="text"
+        id="email"
+        [(ngModel)]="formFields.email"
+        #email="ngModel"
+        name="email"
+        appEmail
+      />
+
+      <div
+        class="login__error"
+        *ngIf="email.errors?.['emailValid'] && (email.touched)"
+      >
+        Email is not in a correct format
+      </div>
+    </div>
+    <div>
+      <label class="login__label" for="password">Password</label>
+      <input
+        required
+        class="login__input"
+        placeholder="input text"
+        type="text"
+        id="password"
+        name="password"
+        [formControl]="formFields.password"
+      />
+      <div
+        class="login__error"
+        *ngIf="formFields.password.errors?.['required'] && formFields.password?.touched "
+      >
+        Password is required
+      </div>
+    </div>
+    <shared-button type="submit" text="Login"></shared-button>
+    <div>
+      <p>If you have an account you may</p>
+      <p class="login__registration-link"><b>Login</b></p>
+    </div>
+  </form>
+</section>

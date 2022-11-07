@@ -1,0 +1,107 @@
+<form [formGroup]="formFields" class="course-form">
+  <div class="course-form__divider">
+    <h2 class="course-form__heading">Main info</h2>
+    <div class="course-form__field">
+      <label class="course-form__label" for="title">Title</label>
+      <input
+        required
+        class="course-form__input"
+        placeholder="input text"
+        type="text"
+        id="title"
+        name="title"
+        formControlName="title"
+      />
+
+      <div
+        class="course-form__error"
+        *ngIf="title?.errors?.['required'] &&  title?.touched"
+      >
+        Title is required
+      </div>
+      <div
+        class="course-form__error"
+        *ngIf="title?.errors?.['minlength'] && title?.touched"
+      >
+        Name must be at least 6 characters long.
+      </div>
+    </div>
+    <div class="course-form__field">
+      <label class="course-form__label" for="description">Description</label>
+      <textarea
+        required
+        class="course-form__textarea"
+        placeholder="input text"
+        type="text"
+        id="description"
+        name="description"
+        formControlName="description"
+      ></textarea>
+
+      <div
+        class="course-form__error"
+        *ngIf="description?.errors?.['required'] &&  description?.touched"
+      >
+        Description is required
+      </div>
+    </div>
+  </div>
+  <div class="course-form__divider">
+    <h2>Authors</h2>
+    <div class="course-form__field">
+      <label class="course-form__label" for="newAuthor">Author Name</label>
+      <div class="course-form__authors">
+        <input
+          class="course-form__input"
+          placeholder="input text"
+          type="text"
+          id="newAuthor"
+          name="newAuthor"
+          formControlName="newAuthor"
+        />
+        <shared-button text="create author"></shared-button>
+      </div>
+    </div>
+
+    <div *ngFor="let author of authors.controls">
+      <div>{{ author }}</div>
+    </div>
+
+    <div
+      class="course-form__error"
+      *ngIf="newAuthor?.errors?.['pattern'] && formFields?.touched"
+    >
+      New author should contain only latin letters and numbers.
+    </div>
+  </div>
+  <h2>Duration</h2>
+  <div class="course-form__field">
+    <label class="course-form__label" for="description">Duration</label>
+    <input
+      required
+      class="course-form__input"
+      placeholder="input text"
+      type="text"
+      id="duration"
+      name="duration"
+      formControlName="duration"
+    />
+    <div
+      class="course-form__error"
+      *ngIf="duration?.errors?.['required'] &&  duration?.touched"
+    >
+      Duration is required
+    </div>
+    <div
+      class="course-form__error"
+      *ngIf="duration?.errors?.['min'] &&  duration?.touched"
+    >
+      Duration should not be less than 0
+    </div>
+  </div>
+  <span class="course-form__hours">{{ duration?.value || 0 | duration }} </span>
+  <div class="course-form__bottom">
+    <shared-button type="submit" text="Cancel"></shared-button>
+    <shared-button type="submit" text="Create Course"></shared-button>
+  </div>
+</form>

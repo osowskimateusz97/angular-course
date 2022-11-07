@@ -23,6 +23,10 @@ export class CoursesComponent implements OnInit {
     this.handleShowCourse.emit($id);
   }
 
+  searchCourse(e: string) {
+    console.log('search: ', e);
+  }
+
   editCourse($id: string) {
     this.handleEditCourse.emit($id);
   }

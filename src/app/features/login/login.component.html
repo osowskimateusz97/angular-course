@@ -1,1 +1,50 @@
-<p>login works!</p>
+<section class="login">
+  <h1 class="login__heading">Login</h1>
+  <form class="login__form">
+    <div>
+      <label class="login__label" for="email">Email</label>
+      <input
+        required
+        class="login__input"
+        placeholder="input text"
+        type="text"
+        id="email"
+        [(ngModel)]="fields.email"
+        #email="ngModel"
+        name="email"
+        appEmail
+      />
+
+      <div
+        class="login__error"
+        *ngIf="email.errors?.['emailValid'] && (email.touched)"
+      >
+        Email is not in a correct format
+      </div>
+    </div>
+    <div>
+      <label class="login__label" for="password">Password</label>
+      <input
+        #password="ngModel"
+        required
+        class="login__input"
+        placeholder="input text"
+        type="text"
+        id="password"
+        name="password"
+        [(ngModel)]="fields.password"
+      />
+      <div
+        class="login__error"
+        *ngIf="password.errors?.['required'] && password.touched"
+      >
+        Password is required
+      </div>
+    </div>
+    <shared-button type="submit" text="Login"></shared-button>
+    <div>
+      <p>If you don't have an account you may</p>
+      <p class="login__registration-link"><b>Registration</b></p>
+    </div>
+  </form>
+</section>
