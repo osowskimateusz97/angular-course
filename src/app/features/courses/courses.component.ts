@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit } from '@angular/core';
 import MOCK_COURSES from 'src/assets/mockData';
 
 @Component({
@@ -8,33 +7,23 @@ import MOCK_COURSES from 'src/assets/mockData';
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
-  @Input() isEditable!: boolean;
-  @Input() courses!: typeof MOCK_COURSES;
-  @Output() handleShowCourse = new EventEmitter<string>();
-  @Output() handleEditCourse = new EventEmitter<string>();
-  @Output() handleDeleteCourse = new EventEmitter<string>();
-
   buttonText = 'Sign in';
   headerBtn = 'Logout';
-  editIcon = faEdit;
-  deleteIcon = faTrash;
-
-  showCourse($id: string) {
-    this.handleShowCourse.emit($id);
-  }
+  courses = MOCK_COURSES;
+  isEditable = true;
 
   searchCourse(e: string) {
     console.log('search: ', e);
   }
-
-  editCourse($id: string) {
-    this.handleEditCourse.emit($id);
+  showCourse($courseId: string) {
+    console.log(`Show course with courseId: ${$courseId}`);
   }
-
-  deleteCourse($id: string) {
-    this.handleDeleteCourse.emit($id);
+  editCourse(courseId: string) {
+    console.log(`Editing course with courseId: ${courseId}`);
   }
-
+  deleteCourse(courseId: string) {
+    console.log(`Deleting course with courseId: ${courseId}`);
+  }
   constructor() {}
   ngOnInit(): void {}
 }
