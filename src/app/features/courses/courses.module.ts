@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchModule } from 'src/app/shared/components/search/search.module';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseCardComponent } from './course-card/course-card.component';
+import { CoursesRoutingModule } from './courses-routing.module';
 
 @NgModule({
   declarations: [CoursesComponent, CourseListComponent, CourseCardComponent],
@@ -16,6 +17,7 @@ import { CourseCardComponent } from './course-card/course-card.component';
     SearchModule,
     CourseModule,
     FontAwesomeModule,
+    CoursesRoutingModule,
   ],
   exports: [CoursesComponent],
 })

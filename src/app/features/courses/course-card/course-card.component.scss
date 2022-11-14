@@ -5,8 +5,12 @@
   margin-bottom: 40px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-left: 7px solid #333e48;
+
   &__title {
     font-size: 20px;
+    &-wrapper {
+      flex-grow: 1;
+    }
   }
   &__meta {
     span:first-child {

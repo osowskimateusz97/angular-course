@@ -102,6 +102,10 @@
   <span class="course-form__hours">{{ duration?.value || 0 | duration }} </span>
   <div class="course-form__bottom">
     <shared-button type="submit" text="Cancel"></shared-button>
-    <shared-button type="submit" text="Create Course"></shared-button>
+    <shared-button
+      (click)="submitForm()"
+      type="submit"
+      text="Create Course"
+    ></shared-button>
   </div>
 </form>
