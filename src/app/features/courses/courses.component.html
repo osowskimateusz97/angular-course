@@ -4,20 +4,13 @@
 </shared-header>
 <main class="wrapper">
   <app-search (handleSearchValue)="searchCourse($event)"></app-search>
-  <app-course
-    *ngFor="let course of courses"
-    [course]="course"
+  <app-course-list
     [isEditable]="isEditable"
-  >
-    <span showCourseBtn>
-      <shared-button
-        (click)="showCourse(course.id)"
-        text="show course"
-      ></shared-button>
-    </span>
-    <fa-icon (click)="editCourse(course.id)" [icon]="editIcon"></fa-icon>
-    <fa-icon (click)="deleteCourse(course.id)" [icon]="deleteIcon"></fa-icon>
-  </app-course>
+    [courses]="courses"
+    (handleShowCourse)="showCourse($event)"
+    (handleEditCourse)="editCourse($event)"
+    (handleDeleteCourse)="deleteCourse($event)"
+  ></app-course-list>
   <shared-info
     infoTitle="Your List is Empty"
     infoText="Please use 'Add New Course' button to add your first course"

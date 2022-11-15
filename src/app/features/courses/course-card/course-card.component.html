@@ -1,0 +1,20 @@
+<article class="course">
+  <div>
+    <h3 class="course_title">{{ course.title }}</h3>
+    <p>
+      {{ course.description }}
+    </p>
+  </div>
+  <div class="course__meta">
+    <p>
+      <span>Authors:</span>
+      <span *ngFor="let author of course.authors">{{ author }}</span>
+    </p>
+    <p><span>Duration:</span> {{ durationInHoursFormat }}</p>
+    <p><span>Created:</span> {{ course.creationDate | creationDate }}</p>
+    <div class="course__button-wrapper">
+      <ng-content select="[showCourseBtn]"></ng-content>
+      <ng-content *ngIf="isEditable"></ng-content>
+    </div>
+  </div>
+</article>
