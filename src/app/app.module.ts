@@ -6,10 +6,20 @@ import { CoursesModule } from './features/courses/courses.module';
 import { WINDOW_PROVIDERS } from './features/auth/services/window.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './features/auth/interceptors/token.interceptor';
+import { effects, reducers } from './store';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, CoursesModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    CoursesModule,
+    AppRoutingModule,
+    HttpClientModule,
+    EffectsModule.forRoot(effects),
+    StoreModule.forRoot(reducers),
+  ],
   providers: [
     WINDOW_PROVIDERS,
     {
