@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
   styleUrls: ['./course-form.component.scss'],
 })
 export class CourseFormComponent implements OnInit {
+  @Output() handleSubmitForm = new EventEmitter<FormGroup>();
+
   formFields = new FormGroup({
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
@@ -34,4 +36,7 @@ export class CourseFormComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  submitForm() {
+    this.handleSubmitForm.emit(this.formFields);
+  }
 }
